@@ -1,0 +1,157 @@
+/* Basic settings */
+.ui-li-static.ui-collapsible {
+    padding: 0;
+}
+
+    .ui-li-static.ui-collapsible > .ui-collapsible-content > .ui-listview,
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading {
+        margin: 0;
+    }
+
+    .ui-li-static.ui-collapsible > .ui-collapsible-content {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-right: 0;
+        border-bottom-width: 0;
+    }
+
+        /* collapse vertical borders */
+        .ui-li-static.ui-collapsible > .ui-collapsible-content > .ui-listview > li.ui-last-child,
+        .ui-li-static.ui-collapsible.ui-collapsible-collapsed > .ui-collapsible-heading > a.ui-btn {
+            border-bottom-width: 0;
+        }
+
+        .ui-li-static.ui-collapsible > .ui-collapsible-content > .ui-listview > li.ui-first-child,
+        .ui-li-static.ui-collapsible > .ui-collapsible-content > .ui-listview > li.ui-first-child > a.ui-btn,
+        .ui-li-static.ui-collapsible > .ui-collapsible-heading > a.ui-btn {
+            border-top-width: 0;
+        }
+
+        /* Remove right borders */
+        .ui-li-static.ui-collapsible > .ui-collapsible-heading > a.ui-btn,
+        .ui-li-static.ui-collapsible > .ui-collapsible-content > .ui-listview > .ui-li-static,
+        .ui-li-static.ui-collapsible > .ui-collapsible-content > .ui-listview > li > a.ui-btn,
+        .ui-li-static.ui-collapsible > .ui-collapsible-content {
+            border-right-width: 0;
+        }
+
+    /* Remove left borders */
+    /* Here, we need class ui-listview-outer to identify the outermost listview */
+    .ui-listview-outer > .ui-li-static.ui-collapsible .ui-li-static.ui-collapsible.ui-collapsible,
+    .ui-listview-outer > .ui-li-static.ui-collapsible > .ui-collapsible-heading > a.ui-btn,
+    .ui-li-static.ui-collapsible > .ui-collapsible-content {
+        border-left-width: 0;
+    }
+/*These apply across all breakpoints because they are outside of a media query */
+table.phone-compare thead th {
+    background-color: #fff;
+}
+
+    table.phone-compare thead th h4 {
+        text-transform: uppercase;
+        font-size: 0.6em;
+        margin: 0;
+    }
+
+    table.phone-compare thead th h3 {
+        font-size: .9em;
+        margin: -.4em 0 .8em 0;
+    }
+
+table.phone-compare th.label {
+    text-transform: uppercase;
+    font-size: 0.6em;
+    opacity: 0.5;
+    padding: 1.2em .8em;
+    background-color: #ddd;
+}
+
+table.phone-compare tbody tr.photos td {
+    background-color: #fff;
+    padding: 0;
+}
+
+table.phone-compare tbody tr.photos img {
+    max-width: 100%;
+    max-height: 80px;
+    min-width: 50%;
+    min-height: 50px;
+}
+
+/* Set Max size for thumbnail images */
+#thumbnailImage {
+    max-width: 550px;
+    max-height: 450px;
+    min-width: 300px;
+    min-height: 200px;
+}
+/*	Use the target selector to style the column chooser button */
+a[href="#phone-table-popup"] {
+    margin-bottom: 1.2em;
+}
+/* Show priority 1 at 320px (20em x 16px) */
+@media screen and (min-width: 20em) {
+    .phone-compare th.ui-table-priority-1,
+    .phone-compare td.ui-table-priority-1 {
+        display: table-cell;
+    }
+}
+/* Show priority 2 at 560px (35em x 16px) */
+@media screen and (min-width: 35em) {
+    .phone-compare th.ui-table-priority-2,
+    .phone-compare td.ui-table-priority-2 {
+        display: table-cell;
+    }
+}
+/* Show priority 3 at 720px (45em x 16px) */
+@media screen and (min-width: 45em) {
+    .phone-compare th.ui-table-priority-3,
+    .phone-compare td.ui-table-priority-3 {
+        display: table-cell;
+    }
+}
+/* Manually hidden */
+.phone-compare th.ui-table-cell-hidden,
+.phone-compare td.ui-table-cell-hidden {
+    display: none;
+}
+/* Manually shown */
+.phone-compare th.ui-table-cell-visible,
+.phone-compare td.ui-table-cell-visible {
+    display: table-cell;
+}
+
+.ui-table-columntoggle-btn {
+    display: none;
+}
+
+/* CSS for Format JSON */
+pre {
+    padding: 5px;
+    margin: 5px;
+}
+
+.string_json {
+    color: #4e9a06;
+}
+
+.number_json {
+    color: #ad7fa8;
+}
+
+.boolean_json {
+    color: blue;
+}
+
+.null_json {
+    color: magenta;
+}
+
+.key_json {
+    color: #204a87;
+}
+
+/* Hidden thumbnailImage when opening dialog */
+#thumbnailImage {
+    display: none;
+}

@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@Styles.Render("~/Content/Mobile/css")
+@Scripts.Render("~/bundles/jquery/Mobile")
+
+<div class="panel panel-default" id="configuration-quartz-scheduler">
+    <div class="panel-heading">
+        <h4 class="panel-title">Information JSON</h4>
+    </div>
+    <div class="panel-body">
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#get-json" id="get-json-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                        <span class="glyphicon glyphicon-floppy-disk"></span> Get new JSON
+                    </a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#profile-show" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">
+                        <span class="glyphicon glyphicon-record"></span> Show JSON
+                    </a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#image-show" role="tab" id="image-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">
+                        <span class="glyphicon glyphicon-picture"></span> Show Image
+                    </a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="get-json" aria-labelledby="home-tab">
+                    <a class="btn btn-sm btn-default synchronousJson">Synchronous JSON</a> 
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="profile-show" aria-labelledby="profile-tab">
+                    <a class="btn btn-sm btn-default show-json-file">Show JSON</a>
+                    <a class="btn btn-sm btn-default clear-json-file">Clear</a>
+                    <div id="content-json">
+                        <pre id="pre-content-json">
+                        </pre>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="image-show" aria-labelledby="profile-tab">
+                    <a class="btn btn-sm btn-default show-images-file">Show Images</a>
+                    <a class="btn btn-sm btn-default clear-images-file">Clear</a>
+                    <div id="content-images">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add new dialog Processing -->
+<div class="modal modal-static" id="processing-modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="text-center">
+            <div style="position: relative!important;" id="processLoadingDataId" class="dialog-processing-loader dialog-processing-corner-all dialog-processing-body-a dialog-processing-loader-verbose">
+                <img src="../../Content/Mobile/images/ajax-loader.gif" />
+                <br/> Please wait...
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /* Set margin-top of configuration-quartz-scheduler */
+    $(document).ready(function () {
+        var headerHeight = $(".navbar.navbar-inverse.navbar-fixed-top.navigation-bar").height();
+        $("#configuration-quartz-scheduler").css({ "margin-top": headerHeight + marginTopDefault });
+        $("#pre-content-json").css({ height: screen.height * 0.6 });
+        $("#pre-content-json").empty().hide();
+        $("#content-images").empty().hide();
+    });
+
+    /* Set event for this button when click */
+    $(".show-json-file").click(function () {
+
+        /* Show Dialog Processing */
+        $("#processing-modal").modal("show");
+        $(".modal modal-static.in").addClass("in");
+
+        /* Clear data for this element */
+        $("#pre-content-json").empty()
+
+        /*GET method*/
+        $.ajax({
+            url: '/Home/ShowJson',
+            type: "GET",
+            cache: false,
+            success: function (data) {
+                try{
+                    var jsonObject = jQuery.parseJSON(data);
+                    document.getElementById("pre-content-json").innerHTML = syntaxHighlightJSON(JSON.stringify(jsonObject, undefined, 4));
+                    $("#pre-content-json").show();
+
+                    /* Hide Dialog Processing */
+                    $("#processing-modal").modal("hide");
+                } catch (err) {
+                    $("#pre-content-json").show();
+                    $("#pre-content-json").append('<div style="color:red;">' + data + '</div>');
+
+                    /* Hide Dialog Processing */
+                    $("#processing-modal").modal("hide");
+                }
+            },
+            error: function (xhr) {
+                bootbox.alert("Error occured. Please try again later!");
+            }
+        });
+    });
+
+    /* Clear JSON content */
+    $(".clear-json-file").click(function () {
+        $("#pre-content-json").empty().hide();
+    });
+
+    /* Set event for this button when user clicks */
+    $(".synchronousJson").click(function () {
+        /* Show Dialog Processing */
+        $("#processing-modal").modal("show");
+
+        /*GET Synchronous JSON */
+        $.ajax({
+            url: '/Home/SynchronousJSON',
+            type: "GET",
+            cache: false,
+            success: function (data) {
+                bootbox.alert(data);
+
+                /* Show Dialog Processing */
+                $("#processing-modal").modal("hide");
+            },
+            error: function (xhr) {
+                bootbox.alert("Error occured. Please try again later!");
+
+                /* Hide Dialog Processing */
+                $("#processing-modal").modal("hide");
+            }
+        });
+    });
+
+    /* Set event for button Show Images. */
+    $(".show-images-file").click(function () {
+        /* Show Dialog Processing */
+        $("#processing-modal").modal("show");
+
+        /* Clear data for this element */
+        $("#content-images").empty()
+
+        /*GET method*/
+        $.ajax({
+            url: '/Home/ShowImageByJSON',
+            type: "GET",
+            cache: false,
+            success: function (data) {
+                try {
+                    /* Get object from data returned */
+                    var jsonObject = jQuery.parseJSON(data);
+                    
+                    /* Call function show image thumbnail */
+                    showImageByJson(jsonObject, "#content-images");
+
+                    /* Hide Dialog Processing */
+                    $("#processing-modal").modal("hide");
+                } catch (err) {
+                    $("#content-images").show();
+                    $("#content-images").append('<div style="color:red;">' + data + '</div>');
+
+                    /* Hide Dialog Processing */
+                    $("#processing-modal").modal("hide");
+                }
+            },
+            error: function (xhr) {
+                bootbox.alert("Error occured. Please try again later!");
+            }
+        });
+    });
+
+</script>

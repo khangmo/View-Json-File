@@ -1,0 +1,239 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.login-form {
+    margin-top: 10px;
+}
+
+body .navigation-bar {
+    background-image: linear-gradient(to bottom, #7B7C7E 0, #505152 100%);
+    border-bottom: 5px solid #B8B8B8;
+    color: #fff;
+    font-size: 15px;
+    min-height: 35px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #D3D3D3;
+}
+
+/* Fix conflick between CSS Bootstrap and CSS Mobile */
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+    color: #38c;
+    font-weight: 300 !important;
+}
+
+.boundary-footer {
+    color: #4B88B8;
+}
+
+#showImagesThumbnails {
+    margin-top: 45px;
+}
+
+.form-input-account {
+    margin-top: 10px;
+}
+
+/* CSS for Format JSON */
+pre {
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: -10px;
+}
+
+.string_json {
+    color: #4e9a06;
+}
+
+.number_json {
+    color: #ad7fa8;
+}
+
+.boolean_json {
+    color: blue;
+}
+
+.null_json {
+    color: magenta;
+}
+
+.key_json {
+    color: #204a87;
+}
+
+/* Hidden thumbnailImage when opening dialog */
+#thumbnailImage {
+    display: none;
+}
+
+#myTabContent div {
+    margin: 10px;
+}
+
+/* Dialog Processing Start */
+.dialog-processing-loader-verbose {
+    width: 200px;
+    filter: Alpha(Opacity=80);
+    opacity: .88;
+    box-shadow: 0 1px 1px -1px #fff;
+    height: auto;
+    margin-left: -110px;
+    margin-top: -100px;
+    padding: 10px;
+}
+
+.dialog-processing-loader {
+    display: block;
+    z-index: 9999999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border: 0;
+}
+
+.dialog-processing-corner-all {
+    border-radius: .6em;
+}
+
+.dialog-processing-body-a {
+    font-family: Time New Roman, Arial, sans-serif /*{global-font-family}*/;
+}
+
+.dialog-processing-body-a {
+    background: #222 /*{a-body-background-color}*/;
+    color: #fff /*{a-body-color}*/;
+    text-shadow: 0 1px 1px #111;
+    font-weight: normal;
+    background-image: linear-gradient( #444 /*{a-body-background-start}*/, #222 /*{a-body-background-end}*/ );
+}
+
+.dialog-processing-loader-verbose .ui-icon {
+    margin: 0 auto 10px;
+    filter: Alpha(Opacity=75);
+    opacity: .75;
+}
+
+.dialog-processing-loader .ui-icon {
+    background-color: #000;
+    display: block;
+    width: 44px;
+    height: 44px;
+    padding: 1px;
+    -webkit-border-radius: 36px;
+    -moz-border-radius: 36px;
+    border-radius: 36px;
+}
+
+.dialog-processing-icon-loading {
+    background: url(./Mobile/images/ajax-loader.gif);
+    background-size: 46px 46px;
+}
+
+.dialog-processing-body-a {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.dialog-processing-body-a {
+    color: #fff;
+    text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 1px /*{a-body-shadow-radius}*/ #111 /*{a-body-shadow-color}*/;
+    font-weight: normal;
+}
+
+.dialog-processing-loader-verbose h1 {
+    font-size: 13px;
+    margin: 0;
+    text-align: center;
+}
+
+
+.modal-static,
+.modal-static .modal-dialog,
+.modal-static .modal-content {
+    width: 200px;
+    height: 100px;
+}
+
+    .modal-static .modal-dialog,
+    .modal-static .modal-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+        .modal-static .modal-content .icon {
+        }
+
+.bs-example {
+    margin: 10px;
+}
+
+.hide-modal, .show-modal {
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+}
+
+.hide-modal {
+    z-index: 9999;
+    bottom: 20px;
+}
+
+.hide-modal {
+    z-index: 9999;
+    bottom: 20px;
+}
+
+.open-modal {
+    z-index: 10000;
+    bottom: 20px;
+}
+
+.modal-static {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    margin-top: -100px;
+    margin-left: -100px;
+    overflow: visible !important;
+}
+/* Dialog Processing End */

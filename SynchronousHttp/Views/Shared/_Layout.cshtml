@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top navigation-bar">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                @if (Request.IsAuthenticated)
+                {
+                    <li><a href="/Home/Index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li><a href="/ViewImages/Index"><span class="glyphicon glyphicon-picture"></span> Show Images</a></li>
+                }
+                <li><a href="/Home/About"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <footer>
+            <div class="navbar-fixed-bottom boundary-footer">
+                <center>
+                    <span class="style-text-footer">
+                        <span class="glyphicon glyphicon-copyright-mark">
+                        </span> @DateTime.Now.Year - show images by pass https. v1.0
+                    </span>
+                </center>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
